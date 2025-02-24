@@ -1,5 +1,6 @@
 package com.bridgelabz.employee_payroll_app.model;
 
+import com.bridgelabz.employee_payroll_app.dto.EmployeeDTO;
 import jakarta.persistence.*;
 
 @Entity
@@ -14,16 +15,15 @@ public class Employee {
     private String department;
     private double salary ;
 
-    //Default Constructor
+    //Default Constructor (JPA need this)
     public Employee() {
-
     }
 
-    //Constructor
-    public Employee(String name, String department, double salary){
-        this.name = name;
-        this.department = department;
-        this.salary = salary;
+    //Constructor (used by DTO)
+    public Employee(EmployeeDTO employeeDTO){
+        this.name = employeeDTO.name;
+        this.department = employeeDTO.department;
+        this.salary = employeeDTO.salary;
     }
 
     // Getters and Setters
