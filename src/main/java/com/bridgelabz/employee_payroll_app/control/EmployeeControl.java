@@ -4,11 +4,14 @@ package com.bridgelabz.employee_payroll_app.control;
 import com.bridgelabz.employee_payroll_app.dto.EmployeeDTO;
 import com.bridgelabz.employee_payroll_app.model.Employee;
 import com.bridgelabz.employee_payroll_app.service.IEmployeeService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.logging.LogRecord;
 
+@Slf4j
 @RestController  // Marks the class as a REST Controller, handling HTTP requests
 @RequestMapping("/employees")  // Base URL for all
 public class EmployeeControl {
@@ -25,6 +28,7 @@ public class EmployeeControl {
      */
     @PostMapping("/add")
     public Employee addEmployee(@RequestBody EmployeeDTO employeeDTO) {
+        log.info("Adding new employee: {}", employeeDTO);
         return employeeService.addEmployee(employeeDTO);
     }
 
@@ -35,6 +39,7 @@ public class EmployeeControl {
      */
     @GetMapping
     public List<Employee> getAllEmployees() {
+        log.info("Fetching all employees ");
         return employeeService.getAllEmployees();
     }
 
@@ -46,6 +51,7 @@ public class EmployeeControl {
      */
     @GetMapping("/{id}")
     public Employee getEmployeeById(@PathVariable Long id) {
+        log.info("Fetching all employees by ID: {}", id);
         return employeeService.getEmployeeById(id);
     }
 
@@ -57,6 +63,7 @@ public class EmployeeControl {
      */
     @PutMapping("/update/{id}")
     public Employee updateEmployee(@PathVariable Long id, @RequestBody EmployeeDTO employeeDTO) {
+        log.info("Updating employee with ID: {}, Data: {}", id, employeeDTO);
         return employeeService.updateEmployee(id, employeeDTO);
     }
 
@@ -67,6 +74,7 @@ public class EmployeeControl {
      */
     @DeleteMapping("/delete/{id}")
     public String deleteEmployee(@PathVariable Long id) {
+        log.info("Deleting employee with ID: {}", id);
         employeeService.deleteEmployee(id);
         return "Employee deleted successfully";
     }
