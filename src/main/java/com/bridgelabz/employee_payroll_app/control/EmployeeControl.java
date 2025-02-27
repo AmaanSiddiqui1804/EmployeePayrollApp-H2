@@ -2,14 +2,14 @@
 package com.bridgelabz.employee_payroll_app.control;
 
 import com.bridgelabz.employee_payroll_app.dto.EmployeeDTO;
-import com.bridgelabz.employee_payroll_app.model.Employee;
 import com.bridgelabz.employee_payroll_app.service.IEmployeeService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.logging.LogRecord;
 
 @Slf4j
 @RestController  // Marks the class as a REST Controller, handling HTTP requests
@@ -27,9 +27,10 @@ public class EmployeeControl {
      * URL: POST /employees/add
      */
     @PostMapping("/add")
-    public Employee addEmployee(@RequestBody EmployeeDTO employeeDTO) {
+    public ResponseEntity<EmployeeDTO> addEmployee(@RequestBody EmployeeDTO employeeDTO) {
         log.info("Adding new employee: {}", employeeDTO);
-        return employeeService.addEmployee(employeeDTO);
+        EmployeeDTO addedEmployee = employeeService.addEmployee(employeeDTO);
+        return new ResponseEntity<>(addedEmployee, HttpStatus.CREATED);
     }
 
     /**
@@ -38,9 +39,10 @@ public class EmployeeControl {
      * URL: GET /employees
      */
     @GetMapping
-    public List<Employee> getAllEmployees() {
+    public ResponseEntity<List<EmployeeDTO>> getAllEmployees() {
         log.info("Fetching all employees ");
-        return employeeService.getAllEmployees();
+        List<EmployeeDTO> employees = employeeService.getAllEmployees();
+        return new ResponseEntity<>(employees, HttpStatus.OK);
     }
 
     /**
@@ -50,9 +52,10 @@ public class EmployeeControl {
      * URL: GET /employees/{id}
      */
     @GetMapping("/{id}")
-    public Employee getEmployeeById(@PathVariable Long id) {
-        log.info("Fetching all employees by ID: {}", id);
-        return employeeService.getEmployeeById(id);
+    public ResponseEntity<EmployeeDTO> getEmployeeById(@PathVariable Long id) {
+        log.info("Fetching employee by ID: {}", id);
+        EmployeeDTO employee = employeeService.getEmployeeById(id);
+        return new ResponseEntity<>(employee, HttpStatus.OK);
     }
 
     /**
@@ -61,10 +64,12 @@ public class EmployeeControl {
      * It receives updated employee data as JSON and applies changes.
      * URL: PUT /employees/update/{id}
      */
+
     @PutMapping("/update/{id}")
-    public Employee updateEmployee(@PathVariable Long id, @RequestBody EmployeeDTO employeeDTO) {
+    public ResponseEntity<EmployeeDTO> updateEmployee(@PathVariable Long id, @RequestBody EmployeeDTO employeeDTO) {
         log.info("Updating employee with ID: {}, Data: {}", id, employeeDTO);
-        return employeeService.updateEmployee(id, employeeDTO);
+        EmployeeDTO updatedEmployee = employeeService.updateEmployee(id, employeeDTO);
+        return new ResponseEntity<>(updatedEmployee, HttpStatus.OK);
     }
 
     /**
@@ -73,11 +78,12 @@ public class EmployeeControl {
      * URL: DELETE /employees/delete/{id}
      */
     @DeleteMapping("/delete/{id}")
-    public String deleteEmployee(@PathVariable Long id) {
+    public ResponseEntity<String> deleteEmployee(@PathVariable Long id) {
         log.info("Deleting employee with ID: {}", id);
         employeeService.deleteEmployee(id);
-        return "Employee deleted successfully";
+        return new ResponseEntity<>("Employee deleted successfully", HttpStatus.OK);
     }
+
 }
 
 

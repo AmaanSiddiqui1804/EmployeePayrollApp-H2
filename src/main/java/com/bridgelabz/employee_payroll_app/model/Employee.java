@@ -27,6 +27,7 @@ public class Employee {
             this.salary = employeeDTO.getSalary();
         }
     }
+}
 
 /*
     public void setName(String name) {
@@ -46,4 +47,4 @@ public class Employee {
     }
 
  */
-}
+

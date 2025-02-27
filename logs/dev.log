@@ -1,0 +1,10 @@
+2025-02-27 21:11:05 [restartedMain] INFO  c.b.e.EmployeePayrollApp2Application - Starting EmployeePayrollApp2Application using Java 20.0.2 with PID 15352 (D:\Week_06\EmployeePayrollApp2\target\classes started by DELL in D:\Week_06\EmployeePayrollApp2)
+2025-02-27 21:11:05 [restartedMain] DEBUG c.b.e.EmployeePayrollApp2Application - Running with Spring Boot v3.4.3, Spring v6.2.3
+2025-02-27 21:11:05 [restartedMain] INFO  c.b.e.EmployeePayrollApp2Application - The following 1 profile is active: "dev"
+2025-02-27 21:11:14 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-02-27 21:11:15 [restartedMain] INFO  c.b.e.EmployeePayrollApp2Application - Started EmployeePayrollApp2Application in 10.597 seconds (process running for 12.125)
+2025-02-27 21:11:15 [restartedMain] INFO  c.b.e.EmployeePayrollApp2Application - Employee Payroll App Started in DEV Environment
+2025-02-27 21:12:50 [http-nio-8080-exec-1] INFO  c.b.e.control.EmployeeControl - Fetching all employees 
+2025-02-27 21:14:22 [http-nio-8080-exec-5] INFO  c.b.e.control.EmployeeControl - Adding new employee: EmployeeDTO(name=Pappu, department=IT, salary=88000.0)
+2025-02-27 21:14:35 [http-nio-8080-exec-6] INFO  c.b.e.control.EmployeeControl - Fetching all employees 
+2025-02-27 21:15:22 [http-nio-8080-exec-7] INFO  c.b.e.control.EmployeeControl - Fetching all employees 

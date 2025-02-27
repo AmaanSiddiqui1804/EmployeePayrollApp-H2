@@ -7,8 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
-//Uc-2-Service
+// UC-2-Service
 @Service  // Marks this as a Service Component to handle business logic
 public class EmployeeService implements IEmployeeService {
 
@@ -16,30 +17,38 @@ public class EmployeeService implements IEmployeeService {
     private EmployeeRepository employeeRepository;
 
     @Override
-    public Employee addEmployee(EmployeeDTO employeeDTO) {
+    public EmployeeDTO addEmployee(EmployeeDTO employeeDTO) {
         Employee employee = new Employee(employeeDTO);
-        return employeeRepository.save(employee);
+        Employee savedEmployee = employeeRepository.save(employee);
+        return new EmployeeDTO(savedEmployee);  // Convert Employee to EmployeeDTO
     }
 
     @Override
-    public List<Employee> getAllEmployees() {
-        return employeeRepository.findAll();
+    public List<EmployeeDTO> getAllEmployees() {
+        return employeeRepository.findAll()
+                .stream()
+                .map(EmployeeDTO::new)  // Convert each Employee to EmployeeDTO
+                .collect(Collectors.toList());
     }
 
     @Override
-    public Employee getEmployeeById(Long id) {
-        return employeeRepository.findById(id)
+    public EmployeeDTO getEmployeeById(Long id) {
+        Employee employee = employeeRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Employee not found"));
+        return new EmployeeDTO(employee); // Convert Employee to EmployeeDTO
     }
 
     @Override
-    public Employee updateEmployee(Long id, EmployeeDTO employeeDTO) {
-        return employeeRepository.findById(id).map(employee -> {
-            employee.setName(employeeDTO.getName());
-            employee.setDepartment(employeeDTO.getDepartment());
-            employee.setSalary(employeeDTO.getSalary());
-            return employeeRepository.save(employee);
-        }).orElseThrow(() -> new RuntimeException("Employee not found"));
+    public EmployeeDTO updateEmployee(Long id, EmployeeDTO employeeDTO) {
+        Employee employee = employeeRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Employee not found"));
+
+        employee.setName(employeeDTO.getName());
+        employee.setDepartment(employeeDTO.getDepartment());
+        employee.setSalary(employeeDTO.getSalary());
+
+        Employee updatedEmployee = employeeRepository.save(employee);
+        return new EmployeeDTO(updatedEmployee); // Convert Employee to EmployeeDTO
     }
 
     @Override
