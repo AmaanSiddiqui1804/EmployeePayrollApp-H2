@@ -39,7 +39,11 @@
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
-
+		<!-- application.properties configuration switching Dependency -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
 		<!-- Lombok Dependency -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
