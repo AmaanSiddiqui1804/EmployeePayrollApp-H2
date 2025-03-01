@@ -15,5 +15,6 @@ public class EmployeePayrollApp2Application {
 		// Logs the active environment (dev, prod, etc.)
 		log.info("Employee Payroll App Started in {} Environment",
 				context.getEnvironment().getProperty("environment"));
+
 	}
 }
