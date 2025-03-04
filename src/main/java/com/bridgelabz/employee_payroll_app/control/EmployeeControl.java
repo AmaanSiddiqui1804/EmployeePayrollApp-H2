@@ -3,6 +3,7 @@ package com.bridgelabz.employee_payroll_app.control;
 
 import com.bridgelabz.employee_payroll_app.dto.EmployeeDTO;
 import com.bridgelabz.employee_payroll_app.service.IEmployeeService;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,7 +28,7 @@ public class EmployeeControl {
      * URL: POST /employees/add
      */
     @PostMapping("/add")
-    public ResponseEntity<EmployeeDTO> addEmployee(@RequestBody EmployeeDTO employeeDTO) {
+    public ResponseEntity<EmployeeDTO> addEmployee(@Valid @RequestBody EmployeeDTO employeeDTO) {
         log.info("Adding new employee: {}", employeeDTO);
         EmployeeDTO addedEmployee = employeeService.addEmployee(employeeDTO);
         return new ResponseEntity<>(addedEmployee, HttpStatus.CREATED);
@@ -66,7 +67,7 @@ public class EmployeeControl {
      */
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<EmployeeDTO> updateEmployee(@PathVariable Long id, @RequestBody EmployeeDTO employeeDTO) {
+    public ResponseEntity<EmployeeDTO> updateEmployee(@PathVariable Long id, @Valid @RequestBody EmployeeDTO employeeDTO) {
         log.info("Updating employee with ID: {}, Data: {}", id, employeeDTO);
         EmployeeDTO updatedEmployee = employeeService.updateEmployee(id, employeeDTO);
         return new ResponseEntity<>(updatedEmployee, HttpStatus.OK);
@@ -83,8 +84,8 @@ public class EmployeeControl {
         employeeService.deleteEmployee(id);
         return new ResponseEntity<>("Employee deleted successfully", HttpStatus.OK);
     }
-
 }
+
 
 
 

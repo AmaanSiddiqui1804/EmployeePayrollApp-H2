@@ -1,6 +1,16 @@
-2025-03-01 10:26:12 [restartedMain] INFO  c.b.e.EmployeePayrollApp2Application - Starting EmployeePayrollApp2Application using Java 20.0.2 with PID 16516 (D:\Week_06\EmployeePayrollApp2\target\classes started by DELL in D:\Week_06\EmployeePayrollApp2)
-2025-03-01 10:26:12 [restartedMain] DEBUG c.b.e.EmployeePayrollApp2Application - Running with Spring Boot v3.4.3, Spring v6.2.3
-2025-03-01 10:26:12 [restartedMain] INFO  c.b.e.EmployeePayrollApp2Application - The following 1 profile is active: "dev"
-2025-03-01 10:26:18 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-03-01 10:26:18 [restartedMain] INFO  c.b.e.EmployeePayrollApp2Application - Started EmployeePayrollApp2Application in 7.24 seconds (process running for 8.308)
-2025-03-01 10:26:18 [restartedMain] INFO  c.b.e.EmployeePayrollApp2Application - Employee Payroll App Started in DEV Environment
+2025-03-04 10:57:27 [restartedMain] INFO  c.b.e.EmployeePayrollApp2Application - Starting EmployeePayrollApp2Application using Java 20.0.2 with PID 364 (D:\Week_06\EmployeePayrollApp2\target\classes started by DELL in D:\Week_06\EmployeePayrollApp2)
+2025-03-04 10:57:27 [restartedMain] DEBUG c.b.e.EmployeePayrollApp2Application - Running with Spring Boot v3.4.3, Spring v6.2.3
+2025-03-04 10:57:27 [restartedMain] INFO  c.b.e.EmployeePayrollApp2Application - The following 1 profile is active: "dev"
+2025-03-04 10:57:36 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-04 10:57:37 [restartedMain] INFO  c.b.e.EmployeePayrollApp2Application - Started EmployeePayrollApp2Application in 11.527 seconds (process running for 13.485)
+2025-03-04 10:57:37 [restartedMain] INFO  c.b.e.EmployeePayrollApp2Application - Employee Payroll App Started in DEV Environment
+2025-03-04 10:58:45 [http-nio-8080-exec-1] INFO  c.b.e.control.EmployeeControl - Fetching all employees 
+2025-03-04 11:02:24 [http-nio-8080-exec-4] INFO  c.b.e.control.EmployeeControl - Adding new employee: EmployeeDTO(name=Amaan Siddiqui, department=CEO, salary=1200000.0)
+2025-03-04 11:04:08 [http-nio-8080-exec-9] INFO  c.b.e.control.EmployeeControl - Adding new employee: EmployeeDTO(name=Nishank Bathri, department=CFO, salary=1000000.0)
+2025-03-04 11:04:35 [http-nio-8080-exec-8] INFO  c.b.e.control.EmployeeControl - Adding new employee: EmployeeDTO(name=Abhay Gautam, department=Development, salary=900000.0)
+2025-03-04 11:04:53 [http-nio-8080-exec-10] INFO  c.b.e.control.EmployeeControl - Adding new employee: EmployeeDTO(name=Vikas Sahu, department=Development, salary=900000.0)
+2025-03-04 11:05:24 [http-nio-8080-exec-3] INFO  c.b.e.control.EmployeeControl - Adding new employee: EmployeeDTO(name=Tikesh Kardate, department=IOT, salary=890000.0)
+2025-03-04 11:05:45 [http-nio-8080-exec-1] INFO  c.b.e.control.EmployeeControl - Adding new employee: EmployeeDTO(name=Sonu Sharma, department=IT, salary=800000.0)
+2025-03-04 11:06:28 [http-nio-8080-exec-2] INFO  c.b.e.control.EmployeeControl - Adding new employee: EmployeeDTO(name=Neeraj Prajapati, department=Production, salary=800000.0)
+2025-03-04 11:10:43 [http-nio-8080-exec-6] INFO  c.b.e.control.EmployeeControl - Fetching all employees 
+2025-03-04 11:10:54 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m20s202ms134µs800ns).
