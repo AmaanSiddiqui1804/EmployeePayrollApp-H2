@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @Entity
@@ -16,14 +18,22 @@ public class Employee {
     private Long id;
 
     private String name;
-    private String department;
     private double salary;
+    private String gender;
+    private String startDate;
+    private String note;
+    private String profilePic;
+
+    @ElementCollection
+    @CollectionTable(name = "employee_department", joinColumns = @JoinColumn(name = "employee_id"))
+    @Column(name = "department")
+    private List<String> department;
+
 
     // Constructor using DTO
     public Employee(EmployeeDTO employeeDTO) {
         if (employeeDTO != null) {
             this.name = employeeDTO.getName();
-            this.department = employeeDTO.getDepartment();
             this.salary = employeeDTO.getSalary();
         }
     }
