@@ -1,6 +1,7 @@
 package com.bridgelabz.employee_payroll_app.dto;
 
 import com.bridgelabz.employee_payroll_app.model.Employee;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,17 +26,20 @@ public class EmployeeDTO {
     private String gender;
 
     @NotNull(message = "Start date is required")
-    private String startDate; // YYYY-MM-DD format
+    @PastOrPresent(message = "Start date should be past or present only")
+    @JsonFormat(pattern = "dd MMM YYYY")
+    private String startDate;
 
-    private String note; // Optional field, no validation needed
+    @NotBlank(message = "Note cannot be empty")
+    private String note;
 
-    private String profilePic; // Can be null (no validation)
+    private String profilePic;
 
-    @NotEmpty(message = "Department must not be empty")
+    @NotEmpty(message = "Department can not be empty")
     private List<String> department; // Employee can have multiple departments
 
-
-    // Constructor to convert Employee → EmployeeDTO
+}
+    /* Constructor to convert Employee → EmployeeDTO
     public EmployeeDTO(Employee employee) {
         if (employee != null) {
             this.name = employee.getName();
