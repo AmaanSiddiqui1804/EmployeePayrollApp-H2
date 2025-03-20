@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Data
@@ -20,7 +21,7 @@ public class Employee {
     private String name;
     private double salary;
     private String gender;
-    private String startDate;
+    private LocalDate startDate;
     private String note;
     private String profilePic;
 

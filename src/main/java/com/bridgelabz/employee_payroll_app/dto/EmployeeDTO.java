@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.List;
 
 //Data transfer object for Employee
@@ -27,8 +28,9 @@ public class EmployeeDTO {
 
     @NotNull(message = "Start date is required")
     @PastOrPresent(message = "Start date should be past or present only")
-    @JsonFormat(pattern = "dd MMM YYYY")
-    private String startDate;
+    //@JsonFormat(pattern = "dd MMM YYYY")
+     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd MMM yyyy")
+    private LocalDate startDate;
 
     @NotBlank(message = "Note cannot be empty")
     private String note;
